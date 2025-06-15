@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Phone Book</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Digital Phone Book</h1>
+    <p class="description">
+        <span class="desc-greeting">👋 Hi there, I'm your personal phone assistant!</span><br/>
+        <span class="desc-instructions">
+            Try prompts like:<br/>
+            <span class="desc-example">"Add Alice with phone number <b>12345</b>"</span>, 
+            <span class="desc-example">"Update Bob's number"</span>, 
+            <span class="desc-example">"Delete Carol"</span>, or 
+            <span class="desc-example">"List all contacts"</span>.
+        </span>
+        <br/>
+        <span class="desc-note"><strong>Note:</strong> Please use the exact names as they appear in the list.</span>
+    </p>
+
+    <form id="nl-form">
+        <input type="text" id="nl-input" placeholder="e.g. Add Alice, Show all contacts..." autocomplete="off"/>
+        <button type="submit">Send</button>
+    </form>
+    <span id="error"></span>
+    <div id="result-box"></div>
+</div>
+
+<script>
+    document.getElementById('nl-form').onsubmit = async (e) => {
+        e.preventDefault();
+        const input = document.getElementById('nl-input');
+        const error = document.getElementById('error');
+        const resultBox = document.getElementById('result-box');
+        error.innerText = '';
+        resultBox.innerHTML = '';
+
+        if (!input.value.trim()) {
+            error.innerText = 'Please enter a command.';
+            input.focus();
+            return;
+        }
+
+        try {
+            resultBox.innerHTML = "Processing...";
+            const res = await fetch('/api/llm/contacts', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({command: input.value})
+            });
+            const data = await res.json();
+
+            // Message in a chat bubble/dialog
+            let html = `<div class="chat-bubble">${data.message || data.error || "No response."}</div>`;
+
+            // Modern styled table for contacts
+            if (Array.isArray(data.contacts) && data.contacts.length > 0) {
+                html += `
+                <div class="contacts-table-container">
+                  <table class="contacts-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${data.contacts.map(c => `
+                        <tr>
+                          <td>${c.name}</td>
+                          <td>${c.phone}</td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>`;
+            }
+
+            resultBox.innerHTML = html;
+        } catch (err) {
+            error.innerText = 'Failed to reach the server.';
+            resultBox.innerText = '';
+        }
+    };
+</script>
+</body>
+</html>

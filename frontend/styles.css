@@ -1,0 +1,181 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background: #fff;
+    padding: 2rem 3rem;
+    margin-top: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 700px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+p.description {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+button {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#error {
+    color: red;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#result-box {
+    background: #f8fafc;
+    border-left: 5px solid #007bff;
+    padding: 1.1rem 1.2rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    font-size: 1.08rem;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    color: #222;
+    min-height: 2.2rem;
+    word-break: break-word;
+    white-space: pre-line;
+    box-sizing: border-box;
+}
+
+.llm-message {
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.chat-bubble {
+    background: #e9f3ff;
+    color: #222;
+    border-radius: 18px 18px 18px 6px;
+    padding: 1rem 1.3rem;
+    margin-bottom: 1.2rem;
+    max-width: 80%;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.07);
+    border-left: 4px solid #007bff;
+}
+
+.contacts-table-container {
+    overflow-x: auto;
+}
+
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.contacts-table th, .contacts-table td {
+    padding: 0.85em 1.1em;
+    text-align: left;
+}
+
+.contacts-table th {
+    background: #f1f6fb;
+    color: #007bff;
+    font-weight: 600;
+    border-bottom: 2px solid #e3eaf3;
+}
+
+.contacts-table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.contacts-table tr:hover {
+    background: #e9f3ff;
+}
+
+.description {
+    background: #f1f6fb;
+    border-radius: 8px;
+    padding: 1.1em 1.5em;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.05rem;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.04);
+    line-height: 1.7;
+}
+
+.desc-greeting {
+    font-weight: 600;
+    font-size: 1.13rem;
+    color: #007bff;
+}
+
+.desc-instructions {
+    display: block;
+    margin: 0.5em 0 0.2em 0;
+    color: #444;
+}
+
+.desc-example {
+    background: #e9f3ff;
+    border-radius: 5px;
+    padding: 0.1em 0.4em;
+    margin: 0 0.1em;
+    color: #007bff;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 0.98em;
+}
+
+.desc-note {
+    display: block;
+    margin-top: 0.7em;
+    color: #555;
+    font-size: 0.97em;
+}

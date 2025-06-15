@@ -1,0 +1,9 @@
+flask
+flask_cors
+sqlalchemy
+psycopg2-binary
+langchain
+openai
+langchain-community
+python-dotenv
+langchain-openai
