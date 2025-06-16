@@ -112,6 +112,23 @@ llm-phonebook/
 
 ---
 
+## 🖼️ Frontend
+
+Here are some screenshots of the application in action:
+
+<p align="center">
+    <img src="./screenshots/list_contacts.png" alt="List of Contacts" width="600"/>
+</p>
+
+<p align="center">
+    <img src="./screenshots/create_contact.png" alt="Add Contact" width="600"/>
+</p>
+
+<p align="center">
+    <img src="./screenshots/update_contact.png" alt="Update Contact" width="600"/>
+</p>
+
+
 ## 📂 Database
 
 - The `Contact` model contains:
